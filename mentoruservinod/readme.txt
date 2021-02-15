@@ -1,5 +1,3 @@
-# Mentor-User
-
 This is a Django Mentor-User application which contains the following modules;
 
 1.Two groups have been created - UserRole, MentorRole.

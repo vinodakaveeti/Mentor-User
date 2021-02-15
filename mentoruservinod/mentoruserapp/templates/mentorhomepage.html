@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+<div class="container">
+    <div class="jumbptron">
+        <br>
+        <h2>Welcome</h2>
+        <h2>Hi Mentor {{user}}</h2>
+        <p> Token Generated : {{token}}</p>
+        <table class="table">
+            <thead>
+                <tr>
+                  <th scope="col"><h2>Sender</h2></th>
+                  <th scope="col"><h2>Receipient</h2></th>
+                  <th scope="col"><h2>Conversation</h2></th>
+                  <th scope="col"><h2>Reply</h2></th>
+                  <th scope="col"><h2>Sent At</h2></th>
+                  <th scope="col"><h2>Replied At</h2></th>
+                  <th scope="col"><h2>Document</h2></th>
+                </tr>
+            </thead>
+            {% for object in data %}
+            <tr>
+                <div class="row seven-cols">
+                        <td>{{object.sender}}</td>
+                        <td>{{object.receipient}}</td>
+                        <td><a href="{% url 'conversation' pk=object.id %}">{{object.conversation}}</a></td>
+                        <td>{{object.reply}}</td>
+                        <td>{{object.sent_at}}</td>
+                        <td>{{object.reply_at}}</td>
+                        <td><a href="{{object.document.url}}" class="btn btn-primary btn-sm" target="_blank">Download</a></td>
+                        <td><a href="{% url 'reply' pk=object.id %}" class="btn btn-primary btn-sm">Reply</a></td>
+                </div>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
